@@ -21,10 +21,12 @@ export default class ClassComponent extends Component {
   componentDidMount() {
     console.log('run once and never more');
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.name !== this.state.name) {
-      console.log('runs when name changes');
-    }
+  //{name:'', name2:''} - prevState
+  //{name:'a', name2:''} - state
+  componentDidUpdate(gfdsgsdf, prevState) {
+    // if (prevState.name !== this.state.name) {
+    //   console.log('runs when name changes');
+    // }
     console.log('runs every update');
   }
   render() {
