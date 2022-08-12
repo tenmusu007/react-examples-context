@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Button from './Button';
 export default function Card(props) {
   const { item } = props;
   return (
@@ -7,8 +7,8 @@ export default function Card(props) {
       style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
-        width: '400px',
-        height: '300px',
+        width: '450px',
+        height: '400px',
         backgroundColor: 'white',
         borderRadius: '10px',
         margin: 'auto',
@@ -26,11 +26,16 @@ export default function Card(props) {
         src={item.image}
         alt=''
       />
-      <div style={{}}>
-        <h4>{item.title.substring(0, 100)}</h4>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+        }}>
+        <h2>{item.title.substring(0, 100)}</h2>
         <p>{item.description.substring(0, 100)}</p>
         <h2>${item.price.toFixed(2)}</h2>
-        <button>Add to cart</button>
+        <Button />
       </div>
     </div>
   );
