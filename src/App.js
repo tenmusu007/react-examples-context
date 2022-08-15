@@ -3,8 +3,10 @@ import './App.css';
 // import Buttons from './Components/Buttons/Buttons';
 // import FifaTourney from './Components/FifaTourney/FifaTourney';
 // import Context from './Components/Context/Context';
-import CartExercise from './Components/CartExercise/CartExercise';
-// import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
+// import CartExercise from './Components/CartExercise/CartExercise';
+import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
+import Reducer from './Components/Reducer/Reducer';
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
       {/* <FifaTourney /> */}
       {/* <Class /> */}
       {/* <CartClassExercise /> */}
+      <Reducer />
     </div>
   );
 }

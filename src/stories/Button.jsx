@@ -8,18 +8,26 @@ import './button.css';
 export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
+<<<<<<< HEAD
     <div>
       {/* <h1>Atsuya Tanaka</h1>
       <h2>Hello World</h2> */}
+=======
+>>>>>>> 1498e1b21e679180dd6295329dc0b0da5ab64ed1
     <button
       type="button"
       className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
       style={backgroundColor && { backgroundColor }}
       {...props}
+<<<<<<< HEAD
       >
       {label}
     </button>
       </div>
+=======
+    >
+      {label}
+    </button>
   );
 };
 

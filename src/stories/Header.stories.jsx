@@ -17,7 +17,10 @@ export const LoggedIn = Template.bind({});
 LoggedIn.args = {
   user: {
     name: 'Jane Doe',
+<<<<<<< HEAD
     age: '23'
+=======
+>>>>>>> 1498e1b21e679180dd6295329dc0b0da5ab64ed1
   },
 };
 

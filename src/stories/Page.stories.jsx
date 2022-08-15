@@ -1,4 +1,8 @@
+<<<<<<< HEAD
   import React from 'react';
+=======
+import React from 'react';
+>>>>>>> 1498e1b21e679180dd6295329dc0b0da5ab64ed1
 import { within, userEvent } from '@storybook/testing-library';
 
 import { Page } from './Page';
