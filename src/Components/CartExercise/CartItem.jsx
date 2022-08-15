@@ -1,5 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
+// import { Button } from '../../stories/Button';
 import { CartContext } from './CartContext';
 
 export default function CartItem(props) {
@@ -13,6 +14,7 @@ export default function CartItem(props) {
       <li style={{ display: 'grid', gridTemplateColumns: '3fr 1fr' }}>
         <div>
           <button onClick={handleClick}>X</button>
+          {/* <Button /> */}
           <span>{item.title}</span>
         </div>
         <span>${item.price}</span>

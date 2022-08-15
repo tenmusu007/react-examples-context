@@ -1,5 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
+import { Button } from '../../stories/Button';
 import { CartContext } from './CartContext';
 
 export default function Product(props) {
@@ -18,7 +19,8 @@ export default function Product(props) {
       />
       <h2>Price: ${product.price}</h2>
       <p>{product.description}</p>
-      <button onClick={handleClick}>Add to cart</button>
+      {/* <button onClick={handleClick}>Add to cart</button> */}
+      <Button label={"!!"} backgroundColor="orange" onClick={handleClick } />
     </div>
   );
 }
