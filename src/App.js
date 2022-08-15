@@ -4,17 +4,18 @@ import "./App.css";
 // import FifaTourney from './Components/FifaTourney/FifaTourney';
 // import Context from './Components/Context/Context';
 // import CartExercise from './Components/CartExercise/CartExercise';
+// import reduc
 
 function App() {
 	return (
 		<div className='App'>
 			{/* <Context /> */}
-			<CartProvider>
-				<CartExercise />
-			</CartProvider>
+			{/* <CartProvider> */}
+				{/* <CartExercise /> */}
+			{/* </CartProvider> */}
 			{/* <Buttons /> */}
 			{/* <FifaTourney /> */}
-			<Class />
+			{/* <Class /> */}
 		</div>
 	);
 }
