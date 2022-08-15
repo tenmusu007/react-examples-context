@@ -50,7 +50,6 @@ export class CartProvider extends Component {
     this.setState({ cartList: filteredList });
   }
   render() {
-    console.log(this);
     return (
       <CartContext.Provider
         value={{

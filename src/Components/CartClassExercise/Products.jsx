@@ -16,15 +16,17 @@ export default class Products extends Component {
       .then((response) => this.setState({ products: response.data }));
   }
   render() {
-    console.log('products', this.state.products);
     const parseProducts = this.state.products.map((product) => (
       <Product product={product} key={product.id} />
     ));
     return (
-      <div className='component'>
-        <h1>Product list</h1>
+      <div>
         <section
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)' }}>
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3,1fr)',
+            gap: '1rem',
+          }}>
           {parseProducts}
         </section>
       </div>
