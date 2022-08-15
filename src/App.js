@@ -12,12 +12,12 @@ function App() {
   return (
     <div className='App'>
       {/* <Context /> */}
-      <CartExercise />
+      {/* <CartExercise /> */}
       {/* <Buttons /> */}
       {/* <FifaTourney /> */}
       {/* <Class /> */}
-      {/* <CartClassExercise /> */}
-      <Reducer />
+      <CartClassExercise />
+      {/* <Reducer /> */}
     </div>
   );
 }
