@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-export default function useQuestions(data) {
-  console.log('data', data);
+export default function useQuestions() {
   const [questions, setQuestions] = useState([]);
   const parseQuestions = (data) => {
     const newQuestions = data.map((question) => {
