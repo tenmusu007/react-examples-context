@@ -8,93 +8,87 @@
 - Better solution for passing props to not related components
 - Alternative to Context API + useReducer Hook
 
+## How to install
+
+```
+npm install --save react-redux @reduxjs/toolkit
+```
+
 ## Parts of Redux
 
-- Store - Global state (Similar to Context)
+- Docs: [https://redux.js.org/]
+
+- Store:
+  - Global state (Similar to Context).
+  - A store holds the whole state tree of your application.
+  - Multiple reducers can be added to the store.
 
 ```js
-let store = createStore(counter);
+// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './counterSlice';
+import loggedReducer from './loggedSlice';
+
+export default configureStore({
+  reducer: {
+    counter: counterReducer,
+    logged: loggedReducer,
+  },
+});
 ```
 
-- Actions - Functions that returns an object
+- Slice (Reducer):
+  - Object that holds reducer data as name, state, actions and so on.
+  - Actions are generated for each case reducer function
 
 ```js
-const increment = () => {
-  return {
-    type: 'increment',
-  };
-};
-```
+import { createSlice } from '@reduxjs/toolkit';
 
-- Reducer - Function that returns the new state value, depending on the type received as parameter
-
-```js
-const counter = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
-store.subscribe(() => console.log('state changed', store.getState()));
-```
-
-- Dispatch - Function that receives one of the actions as parameter to be executed
-
-```js
-store.dispatch(increment());
-```
-
-## File Structure
-
-- src/store/actions
-- src/store/reducers
-  - index.js
-  - counter.js
-  - isLogged.js
-
-## Multiple reducers
-
-```js
-// src/reducers/index.js
-import counterReducer from './counter';
-import loggedReducer from './isLogged';
-import { combineReducers } from 'redux';
-
-const allReducers = combineReducers({
-  counter: counterReducer,
-  isLogged: loggedReducer,
+export const loggedSlice = createSlice({
+  name: 'logged',
+  initialState: {
+    value: false,
+  },
+  reducers: {
+    signIn: (state) => {
+      state.value = true;
+    },
+    signOut: (state) => {
+      state.value = false;
+    },
+  },
 });
 
-export default allReducers;
+export const { signIn, signOut } = loggedSlice.actions;
+
+export default loggedSlice.reducer;
 ```
 
-```js
-// index.js
-import allReducers from './reducers/index';
-const store = createStore(allReducers);
+- Provider: Component that provides the store as props.
+
+```jsx
+import { Provider } from 'react-redux';
+import store from './store';
+
+<Provider store={store}>
+  <App />
+</Provider>;
 ```
 
 ## Redux DevTools Extension
 
+[https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en]
+
 ```js
-const store = createStore(
-  allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-```
-
-## Provider
-
-```jsx
-import { Provider } from 'react-redux';
-<Provider store={store}>
-  <App />
-</Provider>;
+export default configureStore({
+  reducer: {
+    counter: counterReducer,
+    logged: loggedReducer,
+  },
+  devTools:
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__(),
+});
 ```
 
 ## Redux Hooks
@@ -107,12 +101,12 @@ Function that access a specific property of the state.
 import { useSelector } from 'react-redux';
 
 function App() {
-  const counter = useSelector((state) => state.counter);
-  const isLogged = useSelector((state) => state.isLogged);
+  const counter = useSelector((state) => state.counter.value);
+  const isLogged = useSelector((state) => state.logged.value);
   return (
     <div className='App'>
       <h1>Counter : {counter} </h1>
-      <h1>Is Logged : {isLogged} </h1>
+      <h1>Is Logged : {logged} </h1>
     </div>
   );
 }
@@ -124,11 +118,11 @@ Function that executes one of the actions.
 
 ```js
 import { useSelector, useDispatch } from 'react-redux';
-import { increment } from './actions/index';
+import { increment } from './counterSlice';
 
 function App() {
-  const counter = useSelector((state) => state.counter);
-  const isLogged = useSelector((state) => state.isLogged);
+  const counter = useSelector((state) => state.counter.value);
+  const isLogged = useSelector((state) => state.logged.value);
   const dispatch = useDispatch();
   return (
     <div className='App'>
