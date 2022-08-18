@@ -10,7 +10,9 @@ import './App.css';
 import Redux from './Components/Redux/Redux';
 // import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
 // import Reducer from './Components/Reducer/Reducer';
-import store from './Components/Redux/store';
+// import store from './Components/Redux/store';
+import store from './Components/TodoRedux/app/store';
+import Todo from './Components/TodoRedux/Todo';
 function App() {
   return (
     <div className='App'>
@@ -24,7 +26,8 @@ function App() {
       {/* <Quiz /> */}
       {/* <CustomHook /> */}
       <Provider store={store}>
-        <Redux />
+        {/* <Redux /> */}
+        <Todo />
       </Provider>
     </div>
   );
