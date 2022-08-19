@@ -14,6 +14,7 @@ import BlogPosts from './Components/BlogPosts/BlogPosts';
 // import store from './Components/Redux/store';
 // import store from './Components/TodoRedux/app/store';
 // import Todo from './Components/TodoRedux/Todo';
+import store from './Components/BlogPosts/app/store';
 function App() {
   return (
     <div className='App'>
