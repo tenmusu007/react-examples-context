@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts, postAPost } from './features/posts/postsSlice';
+import {
+  fetchPosts,
+  fetchPostsFromFirebase,
+  postAPost,
+  postAPostToFirebase,
+} from './features/posts/postsSlice';
 import Post from './Post';
 
 export default function BlogPosts() {
@@ -9,7 +14,7 @@ export default function BlogPosts() {
   const titleRef = useRef();
   const bodyRef = useRef();
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchPostsFromFirebase());
   }, []);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,7 +23,7 @@ export default function BlogPosts() {
       body: bodyRef.current.value,
       userId: 1,
     };
-    dispatch(postAPost(newPost));
+    dispatch(postAPostToFirebase(newPost));
   };
   return (
     <div>

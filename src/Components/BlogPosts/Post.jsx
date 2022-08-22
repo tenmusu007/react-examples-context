@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removePost, updatePost } from './features/posts/postsSlice';
+import {
+  removePost,
+  updatePost,
+  updatePostInFirebase,
+  removePostFromFirebase,
+} from './features/posts/postsSlice';
 
 export default function Post(props) {
   const { post } = props;
@@ -23,7 +28,7 @@ export default function Post(props) {
                 title,
                 body,
               };
-              dispatch(updatePost(updatedPost));
+              dispatch(updatePostInFirebase(updatedPost));
               setIsEditing(false);
             }}>
             Done
@@ -55,7 +60,9 @@ export default function Post(props) {
             <h2>Loading...</h2>
           ) : (
             <>
-              <button onClick={() => dispatch(removePost(post.id))}>X</button>
+              <button onClick={() => dispatch(removePostFromFirebase(post.id))}>
+                X
+              </button>
               <button onClick={() => setIsEditing(true)}>Edit</button>
               <h2>{post.title}</h2>
               <p>{post.body}</p>
