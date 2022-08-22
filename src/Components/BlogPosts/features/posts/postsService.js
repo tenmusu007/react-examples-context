@@ -14,6 +14,17 @@ const postsService = {
     );
     return response.data;
   },
+  delete: async (id) => {
+    await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
+    return id;
+  },
+  update: async (post) => {
+    await axios.put(
+      `https://jsonplaceholder.typicode.com/posts/${post.id}`,
+      post
+    );
+    return post;
+  },
 };
 
 export default postsService;
