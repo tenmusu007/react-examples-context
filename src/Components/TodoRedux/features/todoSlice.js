@@ -20,10 +20,12 @@ export const todoSlice = createSlice({
       state.list.push(action.payload);
     },
     remove: (state, action) => {
+      // console.log("pushed");
       state.list = state.list.filter((task) => task.id !== action.payload);
     },
   },
   extraReducers: (builder) => {
+    console.log(builder);
     builder
       .addCase(fetchTodos.fulfilled, (state, action) => {
         // Add all todos to the state array
@@ -35,7 +37,7 @@ export const todoSlice = createSlice({
         state.isLoading = true;
       });
   },
-});
+}); 
 
 export const { add, remove } = todoSlice.actions;
 export default todoSlice.reducer;
