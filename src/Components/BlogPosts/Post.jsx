@@ -1,46 +1,50 @@
-import React from 'react';
-import { removePost, updatePost } from './features/posts/postsSlice';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  removePost,
+  updatePost,
+  updatePostInFirebase,
+  removePostFromFirebase,
+} from './features/posts/postsSlice';
 
 export default function Post(props) {
   const { post } = props;
-  const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState(props.post.title);
-  const [body, setBody] = useState(props.post.body);
   const dispatch = useDispatch();
-  const handleDelete = (id) => {
-    dispatch(removePost(id));
-  };
-  const handleEdit = () => {
-    if (isEditing) {
-      const updatedPost = { ...post, title, body };
-      dispatch(updatePost(updatedPost));
-    }
-    setIsEditing(!isEditing);
-  };
+  const { isUpdating } = useSelector((state) => state.posts);
+  const [isEditing, setIsEditing] = useState(false);
+  // const editTitleRef = useRef();
+  // const editBodyRef = useRef();
+  const [title, setTitle] = useState(post.title);
+  const [body, setBody] = useState(post.body);
+
   return (
     <article key={post.id}>
-      {!isEditing ? (
+      {isEditing ? (
         <>
-          <button onClick={() => handleDelete(post.id)}>X</button>
-          <button onClick={handleEdit}>Edit</button>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
-        </>
-      ) : (
-        <>
-          <button onClick={handleEdit}>Done</button>
+          <button
+            onClick={() => {
+              const updatedPost = {
+                ...post,
+                title,
+                body,
+              };
+              dispatch(updatePostInFirebase(updatedPost));
+              setIsEditing(false);
+            }}>
+            Done
+          </button>
           <div>
-            <label htmlFor=''>Title</label>
+            <label htmlFor='title'>Title</label>
             <input
               type='text'
+              name='title'
+              id=''
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <div>
-            <label htmlFor=''>Body</label>
+            <label htmlFor='body'>Body</label>
             <textarea
               name=''
               id=''
@@ -49,6 +53,21 @@ export default function Post(props) {
               value={body}
               onChange={(e) => setBody(e.target.value)}></textarea>
           </div>
+        </>
+      ) : (
+        <>
+          {isUpdating.status && isUpdating.postId === post.id ? (
+            <h2>Loading...</h2>
+          ) : (
+            <>
+              <button onClick={() => dispatch(removePostFromFirebase(post.id))}>
+                X
+              </button>
+              <button onClick={() => setIsEditing(true)}>Edit</button>
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+            </>
+          )}
         </>
       )}
     </article>

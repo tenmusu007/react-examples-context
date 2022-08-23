@@ -18,9 +18,12 @@ LoggedIn.args = {
   user: {
     name: 'Jane Doe',
 <<<<<<< HEAD
+<<<<<<< HEAD
     age: '23'
 =======
 >>>>>>> 1498e1b21e679180dd6295329dc0b0da5ab64ed1
+=======
+>>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
   },
 };
 

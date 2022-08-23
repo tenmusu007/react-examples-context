@@ -5,6 +5,7 @@ import './button.css';
 /**
  * Primary UI component for user interaction
  */
+<<<<<<< HEAD
 export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
@@ -26,6 +27,21 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
       </div>
 =======
     >
+=======
+// <Button primary={true}>
+export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+  const mode = primary
+    ? 'storybook-button--primary'
+    : 'storybook-button--secondary';
+  return (
+    <button
+      type='button'
+      className={['storybook-button', `storybook-button--${size}`, mode].join(
+        ' '
+      )}
+      style={backgroundColor && { backgroundColor }}
+      {...props}>
+>>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
       {label}
     </button>
   );

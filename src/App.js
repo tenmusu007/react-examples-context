@@ -13,6 +13,7 @@ import BlogPosts from './Components/BlogPosts/BlogPosts';
 // import Reducer from './Components/Reducer/Reducer';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
@@ -24,6 +25,12 @@ import Todo from './Components/TodoRedux/Todo';
 // import Todo from './Components/TodoRedux/Todo';
 import store from './Components/BlogPosts/app/store';
 >>>>>>> 888edaa4a0b699f480fd50f805de3b205815fb2a
+=======
+// import store from './Components/Redux/store';
+// import store from './Components/TodoRedux/app/store';
+// import Todo from './Components/TodoRedux/Todo';
+import store from './Components/BlogPosts/app/store';
+>>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
 function App() {
   return (
     <div className='App'>

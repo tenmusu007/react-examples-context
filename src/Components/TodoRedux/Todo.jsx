@@ -1,13 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { add, remove, fetchTodos } from './features/todoSlice';
-
+import { add, remove, fetchTodos } from './features/todo/todoSlice';
+// import { actions } from './features/todo/todoSlice';
 export default function Todo() {
-  const { list, isLoading } = useSelector((state) => state.todo);
+  const { list, isLoading, isError, message } = useSelector(
+    (state) => state.todo
+  );
   const dispatch = useDispatch();
   const inputRef = useRef();
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     const newTask = {
       id: list.length + 1,
       title: inputRef.current.value,
@@ -17,17 +19,22 @@ export default function Todo() {
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
-  console.log('list', list);
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
+  if (message) {
+    return <h2>{message}</h2>;
+  }
 
+  if (isError) {
+    return <h2>Failed to load data!</h2>;
+  }
   return (
     <div>
-      <h1>Todo</h1>
+      <h1>Todo List</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor='taskInput'>New Task:</label>
-        <input type='text' name='taskInput' ref={inputRef} />
+        <input type='text' ref={inputRef} />
         <button>Submit</button>
       </form>
       <ul>

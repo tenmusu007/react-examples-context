@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import { CartContext } from './CartContext';
+<<<<<<< HEAD
 import ButtonCart from './ButtonCart';
 import styled from 'styled-components';
 const Card = styled.div`
   display: grid;
   align-items: center;
+=======
+import styled from 'styled-components';
+import Button from './Button';
+
+const Card = styled.div`
+  display: grid;
+  align-items: center;
+
+>>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
   grid-template-columns: 1fr 1fr;
   border-radius: 10px;
   width: 450px;
@@ -14,9 +24,17 @@ const Card = styled.div`
   p {
     color: gray;
   }
+<<<<<<< HEAD
   h1 {
     color: hsl(158, 36%, 27%);
   }
+=======
+
+  h1 {
+    color: hsl(158, 36%, 27%);
+  }
+
+>>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
   .card--content {
     display: flex;
     flex-direction: column;
@@ -26,7 +44,11 @@ const Card = styled.div`
 
 export default class Product extends Component {
   render() {
+<<<<<<< HEAD
     const product = this.props.product;
+=======
+    const { product } = this.props;
+>>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
     return (
       <Card>
         <img
@@ -39,12 +61,19 @@ export default class Product extends Component {
           <h1>{product.title}</h1>
           <p>{product.description.substring(0, 100)}</p>
           <h1>${product.price.toFixed(2)}</h1>
+<<<<<<< HEAD
           <ButtonCart
             label='Add to cart'
             type='add'
             onClick={() =>
               this.context.dispatch({ type: 'ADD_TO_CART', payload: product })
             }
+=======
+          <Button
+            label='Add to cart'
+            type='add'
+            onClick={() => this.context.addToCart(product)}
+>>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
           />
         </div>
       </Card>

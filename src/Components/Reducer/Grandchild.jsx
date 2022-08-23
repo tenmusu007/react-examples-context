@@ -7,6 +7,7 @@ export default function Grandchild() {
   return (
     <div className='component'>
       <h1>Grandchild</h1>
+<<<<<<< HEAD
       <div>
         <input
           type='number'
@@ -27,6 +28,22 @@ export default function Grandchild() {
         </button>
         <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
       </div>
+=======
+      <input
+        type='number'
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button
+        onClick={() => dispatch({ type: 'increment', payload: Number(input) })}>
+        Increment
+      </button>
+      <button
+        onClick={() => dispatch({ type: 'decrement', payload: Number(input) })}>
+        Decrement
+      </button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+>>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
     </div>
   );
 }
