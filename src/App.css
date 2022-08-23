@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
 * {
   box-sizing: border-box;
   margin: 0;
@@ -52,12 +48,7 @@
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem;
-<<<<<<< HEAD
-  display: flex;
-  width: 100%;
-=======
   width: 100%
->>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
 }
 
 .off{
@@ -73,9 +64,6 @@ button {
   border: none;
   border-radius: 1rem;
   padding: .5rem 1rem;
-<<<<<<< HEAD
-=======
   background-color: black;
   color: white;
->>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
 }

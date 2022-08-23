@@ -11,26 +11,16 @@ import BlogPosts from './Components/BlogPosts/BlogPosts';
 // import Redux from './Components/Redux/Redux';
 // import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
 // import Reducer from './Components/Reducer/Reducer';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 
-=======
+
 import store from './Components/TodoRedux/app/store';
 import Todo from './Components/TodoRedux/Todo';
->>>>>>> 718bf2517f2cfcf58f85b04b44b0be8e805045ea
-=======
 // import store from './Components/TodoRedux/app/store';
 // import Todo from './Components/TodoRedux/Todo';
-import store from './Components/BlogPosts/app/store';
->>>>>>> 888edaa4a0b699f480fd50f805de3b205815fb2a
-=======
 // import store from './Components/Redux/store';
 // import store from './Components/TodoRedux/app/store';
 // import Todo from './Components/TodoRedux/Todo';
-import store from './Components/BlogPosts/app/store';
->>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
 function App() {
   return (
     <div className='App'>
