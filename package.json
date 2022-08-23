@@ -14,10 +14,7 @@
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
     "redux": "^4.2.0",
-=======
->>>>>>> 2c17039cd23af36b24fe5ec894fd15ff260be88e
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
