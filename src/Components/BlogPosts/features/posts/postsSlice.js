@@ -8,12 +8,24 @@ export const fetchPosts = createAsyncThunk(
     return await postsService.get();
   }
 );
+export const fetchPostsFormFirabase = createAsyncThunk(
+	"posts/fetchPostsFormFirabase",
+	async (thunkAPI) => {
+		return await postsService.getFormFirabase();
+	}
+);
 
 export const postAPost = createAsyncThunk(
   'posts/postAPost',
   async (post, thunkAPI) => {
     return await postsService.post(post);
   }
+);
+export const postATofireBase = createAsyncThunk(
+	"posts/postATofireBase",
+	async (post, thunkAPI) => {
+		return await postsService.postTofireBase(post);
+	}
 );
 
 export const removePost = createAsyncThunk(
@@ -22,12 +34,24 @@ export const removePost = createAsyncThunk(
     return await postsService.delete(id);
   }
 );
+export const removePostTofirebase = createAsyncThunk(
+	"posts/removePostTofirebase",
+	async (id, thunkAPI) => {
+		return await postsService.deletefirebase(id);
+	}
+);
 
 export const updatePost = createAsyncThunk(
   'posts/updatePost',
   async (post, thunkAPI) => {
     return await postsService.update(post);
   }
+);
+export const updateAPostfirebase = createAsyncThunk(
+	"posts/updateAPostfirebase",
+	async (post, thunkAPI) => {
+		return await postsService.updateFirebase(post);
+	}
 );
 
 export const postsSlice = createSlice({
@@ -38,25 +62,40 @@ export const postsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPosts.fulfilled, (state, action) => {
-        state.list = action.payload;
-      })
-      .addCase(postAPost.fulfilled, (state, action) => {
-        state.list.push(action.payload);
-      })
-      .addCase(removePost.fulfilled, (state, action) => {
-        console.log('payload', action.payload);
-        state.list = state.list.filter((post) => post.id !== action.payload);
-      })
-      .addCase(updatePost.fulfilled, (state, action) => {
-        console.log('payload', action.payload);
-        state.list = state.list.map((post) => {
-          if (post.id === action.payload.id) {
-            return action.payload;
-          }
-          return post;
-        });
-      });
+			.addCase(fetchPosts.fulfilled, (state, action) => {
+				state.list = action.payload;
+			})
+			.addCase(fetchPostsFormFirabase.fulfilled, (state, action) => {
+				state.list = action.payload;
+			})
+			.addCase(postAPost.fulfilled, (state, action) => {
+				state.list.push(action.payload);
+			})
+			.addCase(postATofireBase.fulfilled, (state, action) => {
+				state.list.push(action.payload);
+			})
+			.addCase(removePost.fulfilled, (state, action) => {
+				console.log("payload", action.payload);
+				state.list = state.list.filter((post) => post.id !== action.payload);
+			})
+			.addCase(updatePost.fulfilled, (state, action) => {
+				console.log("payload", action.payload);
+				state.list = state.list.map((post) => {
+					if (post.id === action.payload.id) {
+						return action.payload;
+					}
+					return post;
+				});
+			})
+			.addCase(updateAPostfirebase.fulfilled, (state, action) => {
+				console.log("payload", action.payload);
+				state.list = state.list.map((post) => {
+					if (post.id === action.payload.id) {
+						return action.payload;
+					}
+					return post;
+				});
+			});
   },
 });
 

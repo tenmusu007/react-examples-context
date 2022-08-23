@@ -1,5 +1,5 @@
 import React from 'react';
-import { removePost, updatePost } from './features/posts/postsSlice';
+import { removePost, updatePost, removePostTofirebase } from './features/posts/postsSlice';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
@@ -10,7 +10,7 @@ export default function Post(props) {
   const [body, setBody] = useState(props.post.body);
   const dispatch = useDispatch();
   const handleDelete = (id) => {
-    dispatch(removePost(id));
+    dispatch(removePost(id), removePostTofirebase(id));
   };
   const handleEdit = () => {
     if (isEditing) {

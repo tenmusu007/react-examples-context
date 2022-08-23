@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts } from './features/posts/postsSlice';
+import { fetchPosts, fetchPostsFormFirabase } from './features/posts/postsSlice';
 import Post from './Post';
-
+import { firbase } from './firebase';
+// const postColectionRef = firbase('post')
 export default function PostFeed() {
   const { list } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchPostsFormFirabase());
   }, [dispatch]);
   console.log('list', list);
 
