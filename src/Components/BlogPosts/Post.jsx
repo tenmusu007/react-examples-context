@@ -1,5 +1,5 @@
 import React from 'react';
-import { removePost, updatePost, removePostTofirebase } from './features/posts/postsSlice';
+import { removePost, updatePost, removeJ } from './features/posts/postsSlice';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
